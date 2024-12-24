@@ -103,9 +103,10 @@ export async function deleteInvoice(id: string) {
     `;
     revalidatePath('/dashboard/invoices');
   } catch (error) {
-    return {message: `Database Error ${error}: Failed to Create Invoice.`};
+    throw new Error(`Database Error ${error}: Failed to Delete Invoice`);
   }
 }
+
 
 export async function authenticate(
   prevState: string | undefined,
